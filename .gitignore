@@ -2,3 +2,6 @@
 .venv
 todo.txt
 docker_commands.txt
+.env
+**db.sqlite
+/migrations

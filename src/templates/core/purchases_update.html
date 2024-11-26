@@ -1,0 +1,67 @@
+{% from "macro_read_table.html" import read_purchases_table %}
+
+{% extends "_base.html" %}
+{% block content %}
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <main class="form-signin w-100 m-auto">
+      <form role="form" method="post" action="">
+        {{ form.csrf_token }}
+        <h1 class="h3 mb-3 fw-normal text-center">Update table onto database</h1>
+
+        <div class="form-floating">
+          {{ form.purchase_id(placeholder="Purchase ID", class="form-control mb-2") }}
+          {{ form.purchase_id.label }}
+            {% if form.purchase_id.errors %}
+              {% for error in form.purchase_id.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-floating">
+          {{ form.purchase_date(placeholder="Purchase Date", class="form-control mb-2") }}
+          {{ form.purchase_date.label }}
+            {% if form.purchase_date.errors %}
+              {% for error in form.purchase_date.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-floating">
+          {{ form.number_of_purchases(placeholder="Number of Purchases2", class="form-control mb-2") }}
+          {{ form.number_of_purchases.label }}
+            {% if form.number_of_purchases.errors %}
+              {% for error in form.number_of_purchases.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-floating">
+          {{ form.product_id(placeholder="Product ID", class="form-control mb-2") }}
+          {{ form.product_id.label }}
+            {% if form.product_id.errors %}
+              {% for error in form.product_id.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Update Purchase</button>
+      </form>
+    </main>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+{{ read_purchases_table(purchases) }}
+  
+{% endblock %}
