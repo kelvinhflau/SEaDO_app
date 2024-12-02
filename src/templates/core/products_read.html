@@ -1,0 +1,8 @@
+{% from "macro_read_table.html" import read_products_table %}
+
+{% extends "_base.html" %}
+{% block content %}
+
+{{ read_products_table(products) }}
+
+{% endblock %}

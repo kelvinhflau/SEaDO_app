@@ -1,0 +1,56 @@
+{% macro read_products_table(products) %}
+
+<br></br>
+<table id=id class="table table-striped">
+  <thead>
+    <tr>
+      <th>Product ID</th>
+      <th>Name</th>
+      <th>Price (£)</th>
+      <th>Manufacturer</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in products %}
+      <tr>
+        <td>{{ product.product_id }}</td>
+        <td>{{ product.name }}</td>
+        <!-- Towards Data Science (2022) START -->
+        <td>{{ "£{:,.2f}".format(product.price) }}</td>
+        <!-- Towards Data Science (2022) END -->
+        <td>{{ product.manufacturer }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endmacro %}
+
+
+{% macro read_purchases_table(purchases) %}
+
+<br></br>
+<table id=id class="table table-striped">
+  <thead>
+    <tr>
+      <th>Purchase ID</th>
+      <th>Purchase date</th>
+      <th>Number of Purchases</th>
+      <th>Product ID</th>
+      <th>Product Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for purchase in purchases %}
+      <tr>
+        <td>{{ purchase[0].purchase_id }}</td>
+        <td>{{ purchase[0].purchase_date.strftime('%d/%m/%Y') }}</td>
+        <td>{{ purchase[0].number_of_purchases }}</td>
+        <td>{{ purchase[0].product_id }}</td>
+        <td>{{ purchase[1].name }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endmacro %}

@@ -1,0 +1,67 @@
+{% from "macro_read_table.html" import read_products_table %}
+
+{% extends "_base.html" %}
+{% block content %}
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <main class="form-signin w-100 m-auto">
+      <form role="form" method="post" action="">
+        {{ form.csrf_token }}
+        <h1 class="h3 mb-3 fw-normal text-center">Update row in database</h1>
+        <div class="form-floating">
+          {{ form.product_id(placeholder="ID", class="form-control mb-2") }}
+          {{ form.product_id.label }}
+            {% if form.product_id.errors %}
+              {% for error in form.product_id.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-floating">
+          {{ form.name(placeholder="Name", class="form-control mb-2") }}
+          {{ form.name.label }}
+            {% if form.name.errors %}
+              {% for error in form.name.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-floating">
+          {{ form.price(placeholder="price", class="form-control mb-2") }}
+          {{ form.price.label }}
+            {% if form.price.errors %}
+              {% for error in form.price.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-floating">
+          {{ form.manufacturer(placeholder="manufacturer", class="form-control mb-2") }}
+          {{ form.manufacturer.label }}
+            {% if form.manufacturer.errors %}
+              {% for error in form.manufacturer.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Update Product</button>
+      </form>
+    </main>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+{{ read_products_table(products) }}
+  
+{% endblock %}
